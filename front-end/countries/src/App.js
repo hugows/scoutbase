@@ -33,6 +33,8 @@ const Title = styled.h1`
 `;
 const CountryName = styled.h2`
     font-size: 1.5em;
+    margin: 0;
+    padding: 0;
     color: #777;
 `;
 const Explain = styled.p`
@@ -146,9 +148,14 @@ function CountryList() {
     let items = data.countries.map(({ name, code, languages, continent, emoji }) => (
         <Link to={`countries/${code}`} className="grid-item card-wrapper" key={code}>
             <div className="card-header">
-                <CountryName>{name}</CountryName>
+                <div>
+                    <CountryName>{name}</CountryName>
+                    <div style={{ color: "palevioletred", fontStyle: "italic" }}>{continent.name}</div>
+                </div>
+
                 <span style={{ fontSize: 80 }}>{emoji}</span>
             </div>
+
             <div className="card-body">
                 {languages.map(
                     ({ name, native }) =>
