@@ -131,6 +131,8 @@ function Country({ match }) {
                     <span>{data.country.phone}</span>
                 </div>
             </div>
+
+            <LinkButton href="/countries">Back to the list</LinkButton>
         </div>
     );
 }
@@ -148,12 +150,15 @@ function CountryList() {
                 <span style={{ fontSize: 80 }}>{emoji}</span>
             </div>
             <div className="card-body">
-                {languages.map(({ name, native }) => (
-                    <div className="card-item" key={name}>
-                        <span>{name}</span>
-                        <span>{native}</span>
-                    </div>
-                ))}
+                {languages.map(
+                    ({ name, native }) =>
+                        name != null && (
+                            <div className="card-item" key={name}>
+                                <span>{name}</span>
+                                <span>{native}</span>
+                            </div>
+                        )
+                )}
             </div>
         </Link>
     ));
